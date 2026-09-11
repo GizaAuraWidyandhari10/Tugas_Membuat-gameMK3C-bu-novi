@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#111827">
+    <title>Pixel Quest Adventure</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <section id="screen-main-menu" class="screen active">
+            <div class="menu-box">
+                <div class="logo">✦</div>
+                <h1 class="game-title">PIXEL QUEST</h1>
+                <p class="game-subtitle">ADVENTURE · PLATFORMER GAME</p>
+                <button id="btn-play" class="menu-btn">PLAY GAME</button>
+                <button id="btn-how-to-play" class="menu-btn">HOW TO PLAY</button>
+                <button id="btn-select-stage" class="menu-btn">SELECT STAGE</button>
+            </div>
+        </section>
+
+        <section id="screen-how-to-play" class="screen">
+            <div class="menu-box">
+                <h2>HOW TO PLAY</h2>
+                <div class="howto-content">
+                    <p>◀ ▶ &nbsp; Bergerak</p>
+                    <p>⬆ / SPACE / JUMP &nbsp; Melompat</p>
+                    <p>🪙 Kumpulkan koin</p>
+                    <p>⚠️ Hindari duri</p>
+                    <p>👾 Injak musuh dari atas</p>
+                    <p>🏁 Capai bendera finish</p>
+                    <p class="howto-footer">Selesaikan semua 3 stage!</p>
+                </div>
+                <button id="btn-howto-back" class="menu-btn">BACK</button>
+            </div>
+        </section>
+
+        <section id="screen-select-stage" class="screen">
+            <div class="menu-box">
+                <h2>SELECT STAGE</h2>
+                <div id="stage-list" class="stage-list"></div>
+                <button id="btn-reset-progress" class="menu-btn small danger">RESET PROGRESS</button>
+                <button id="btn-stage-back" class="menu-btn">BACK</button>
+            </div>
+        </section>
+
+        <section id="screen-game" class="screen game-screen">
+            <div id="game-container">
+                <canvas id="game-canvas"></canvas>
+
+                <div id="hud">
+                    <div id="hud-lives" class="hud-item">❤️❤️❤️</div>
+                    <div id="hud-stage-name" class="hud-item">GREEN VALLEY</div>
+                    <div class="hud-item">🪙 <span id="coin-count">0</span></div>
+                    <div class="hud-item">⭐ <span id="score-count">0</span></div>
+                </div>
+
+                <button id="btn-sound" class="icon-btn" aria-label="Sound">🔊</button>
+                <button id="btn-pause" class="icon-btn" aria-label="Pause">⏸</button>
+
+                <div id="rotate-message">Untuk pengalaman lebih nyaman,<br>putar perangkat jika memungkinkan.</div>
+
+                <div id="touch-controls">
+                    <div class="dpad">
+                        <button id="btn-left" class="ctrl-btn" aria-label="Kiri">◀</button>
+                        <button id="btn-right" class="ctrl-btn" aria-label="Kanan">▶</button>
+                    </div>
+                    <button id="btn-jump" class="ctrl-btn jump-btn" aria-label="Lompat">JUMP</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="overlay-pause" class="overlay hidden">
+            <div class="menu-box">
+                <h2>GAME PAUSED</h2>
+                <button id="btn-resume" class="menu-btn">RESUME</button>
+                <button id="btn-restart" class="menu-btn">RESTART</button>
+                <button id="btn-mainmenu-from-pause" class="menu-btn">MAIN MENU</button>
+            </div>
+        </div>
+
+        <div id="overlay-gameover" class="overlay hidden">
+            <div class="menu-box">
+                <h2 class="danger-text">GAME OVER</h2>
+                <p>Score: <span id="gameover-score">0</span></p>
+                <p>Coin: <span id="gameover-coin">0</span></p>
+                <button id="btn-tryagain" class="menu-btn">TRY AGAIN</button>
+                <button id="btn-gameover-mainmenu" class="menu-btn">MAIN MENU</button>
+            </div>
+        </div>
+
+        <div id="overlay-stagecomplete" class="overlay hidden">
+            <div class="menu-box">
+                <h2 class="success-text">STAGE COMPLETE!</h2>
+                <p>Score: <span id="complete-score">0</span></p>
+                <p>Coins: <span id="complete-coin">0</span></p>
+                <p>Time: <span id="complete-time">00:00</span></p>
+                <button id="btn-nextstage" class="menu-btn">NEXT STAGE</button>
+                <button id="btn-complete-mainmenu" class="menu-btn">MAIN MENU</button>
+            </div>
+        </div>
+
+        <div id="overlay-win" class="overlay hidden">
+            <div class="menu-box">
+                <h2 class="success-text">🎉 YOU WIN! 🎉</h2>
+                <p>Congratulations! Semua stage selesai.</p>
+                <p>Final Score: <span id="win-score">0</span></p>
+                <p>Total Coins: <span id="win-coin">0</span></p>
+                <button id="btn-playagain" class="menu-btn">PLAY AGAIN</button>
+                <button id="btn-win-mainmenu" class="menu-btn">MAIN MENU</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

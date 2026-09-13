@@ -8,8 +8,8 @@
 // ==============================
 const GAME_WIDTH = 480;     // lebar "dunia layar" logis (bukan piksel asli layar HP)
 const GAME_HEIGHT = 270;    // tinggi "dunia layar" logis
-const GRAVITY = 0.5;        // percepatan jatuh
-const JUMP_VELOCITY = -9.6; // kecepatan awal saat lompat (negatif = ke atas)
+const GRAVITY = 0.005;        // percepatan jatuh
+const JUMP_VELOCITY = -1; // kecepatan awal saat lompat (negatif = ke atas)
 const MOVE_SPEED = 2.3;     // kecepatan jalan kiri/kanan
 const MAX_FALL_SPEED = 9;   // batas kecepatan jatuh maksimum
 const PLAYER_W = 20;
@@ -58,8 +58,8 @@ const LEVELS = [
     width: 2650,
     playerStart: { x: 40, y: 190 },
     platforms: [
-      { type: 'ground', x: 0,    y: 240, w: 520, h: 60 },
-      { type: 'ground', x: 590,  y: 240, w: 330, h: 60 },
+      { type: 'ground', x: 0, y: 240, w: 520, h: 60 },
+      { type: 'ground', x: 590, y: 240, w: 330, h: 60 },
       { type: 'ground', x: 1000, y: 240, w: 380, h: 60 },
       { type: 'ground', x: 1550, y: 240, w: 450, h: 60 },
       { type: 'ground', x: 2070, y: 240, w: 580, h: 60 },
@@ -105,9 +105,9 @@ const LEVELS = [
     width: 3100,
     playerStart: { x: 40, y: 190 },
     platforms: [
-      { type: 'ground', x: 0,    y: 240, w: 380, h: 60 },
-      { type: 'ground', x: 480,  y: 240, w: 220, h: 60 },
-      { type: 'ground', x: 820,  y: 240, w: 200, h: 60 },
+      { type: 'ground', x: 0, y: 240, w: 380, h: 60 },
+      { type: 'ground', x: 480, y: 240, w: 220, h: 60 },
+      { type: 'ground', x: 820, y: 240, w: 200, h: 60 },
       { type: 'ground', x: 1180, y: 240, w: 180, h: 60 },
       { type: 'ground', x: 1650, y: 240, w: 220, h: 60 },
       { type: 'ground', x: 2050, y: 240, w: 200, h: 60 },
@@ -167,13 +167,13 @@ const LEVELS = [
     width: 3500,
     playerStart: { x: 40, y: 190 },
     platforms: [
-      { type: 'ground', x: 0,    y: 240, w: 260, h: 60 },
+      { type: 'ground', x: 0, y: 240, w: 260, h: 60 },
 
-      { type: 'platform', x: 320,  y: 210, w: 80, h: 16 },
-      { type: 'platform', x: 470,  y: 180, w: 70, h: 16 },
-      { type: 'platform', x: 620,  y: 150, w: 60, h: 16 },
-      { type: 'platform', x: 770,  y: 190, w: 60, h: 16 },
-      { type: 'platform', x: 950,  y: 220, w: 200, h: 16 },
+      { type: 'platform', x: 320, y: 210, w: 80, h: 16 },
+      { type: 'platform', x: 470, y: 180, w: 70, h: 16 },
+      { type: 'platform', x: 620, y: 150, w: 60, h: 16 },
+      { type: 'platform', x: 770, y: 190, w: 60, h: 16 },
+      { type: 'platform', x: 950, y: 220, w: 200, h: 16 },
       { type: 'platform', x: 1300, y: 200, w: 60, h: 16 },
       { type: 'platform', x: 1550, y: 170, w: 60, h: 16 },
       { type: 'platform', x: 1800, y: 220, w: 160, h: 16 },
@@ -181,7 +181,7 @@ const LEVELS = [
       { type: 'platform', x: 2400, y: 160, w: 60, h: 16 },
       { type: 'platform', x: 2650, y: 220, w: 180, h: 16 },
       { type: 'platform', x: 3000, y: 190, w: 60, h: 16 },
-      { type: 'ground',   x: 3150, y: 240, w: 350, h: 60 },
+      { type: 'ground', x: 3150, y: 240, w: 350, h: 60 },
 
       { type: 'moving-h', x: 1080, y: 150, w: 70, h: 16, minX: 1080, maxX: 1260, speed: 1.2, dir: 1 },
       { type: 'moving-v', x: 1650, y: 100, w: 70, h: 16, minY: 90, maxY: 210, speed: 1.0, dir: 1 },
@@ -208,7 +208,7 @@ const LEVELS = [
       { x: 3200, y: 210 }, { x: 3230, y: 210 }, { x: 3260, y: 210 }
     ],
     enemies: [
-      { x: 970,  y: 196, w: 24, h: 24, minX: 950, maxX: 1130, speed: 1.2, dir: 1 },
+      { x: 970, y: 196, w: 24, h: 24, minX: 950, maxX: 1130, speed: 1.2, dir: 1 },
       { x: 1830, y: 196, w: 24, h: 24, minX: 1800, maxX: 1940, speed: 1.3, dir: 1 },
       { x: 2680, y: 196, w: 24, h: 24, minX: 2650, maxX: 2810, speed: 1.4, dir: -1 },
       { x: 3200, y: 216, w: 24, h: 24, minX: 3150, maxX: 3450, speed: 1.5, dir: 1 },
@@ -1059,7 +1059,7 @@ function setupTouchControls() {
 
   bindHoldButton(btnLeft, () => (input.left = true), () => (input.left = false));
   bindHoldButton(btnRight, () => (input.right = true), () => (input.right = false));
-  bindHoldButton(btnJump, () => (input.jumpQueued = true), () => {});
+  bindHoldButton(btnJump, () => (input.jumpQueued = true), () => { });
 }
 
 function bindHoldButton(el, onPress, onRelease) {

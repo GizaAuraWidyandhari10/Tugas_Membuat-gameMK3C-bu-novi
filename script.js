@@ -8,8 +8,8 @@
 // ==============================
 const GAME_WIDTH = 480;     // lebar "dunia layar" logis (bukan piksel asli layar HP)
 const GAME_HEIGHT = 270;    // tinggi "dunia layar" logis
-const GRAVITY = 0.005;        // percepatan jatuh
-const JUMP_VELOCITY = -1; // kecepatan awal saat lompat (negatif = ke atas)
+const GRAVITY = 0.01;        // percepatan jatuh
+const JUMP_VELOCITY = -1.5; // kecepatan awal saat lompat (negatif = ke atas)
 const MOVE_SPEED = 2.3;     // kecepatan jalan kiri/kanan
 const MAX_FALL_SPEED = 9;   // batas kecepatan jatuh maksimum
 const PLAYER_W = 20;
